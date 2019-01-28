@@ -43,7 +43,7 @@ app.post('/addmovie',(req,res)=>{
 })
 
 //Edit data from movie lists
-app.put('/editmovie/:id',(req,res)=>{
+app.post('/editmovie/:id',(req,res)=>{
     var editMovies = req.body
     var sql = `UPDATE movies SET ? where id = '${req.params.id}'`;
     conn.query(sql, editMovies,(err,result)=>{
@@ -53,7 +53,7 @@ app.put('/editmovie/:id',(req,res)=>{
 })
 
 //Delete data from movie lists
-app.delete('/deletemovie/:id', (req,res) => {
+app.post('/deletemovie/:id', (req,res) => {
     var sql = `DELETE from movies WHERE id = '${req.params.id}'`;
     conn.query(sql,(err,result) => {
         res.send(result)
@@ -82,7 +82,7 @@ app.post('/addcategory',(req,res) => {
 })
 
 //Edit categories from lists
-app.put('/editcategory/:id',(req,res) => {
+app.post('/editcategory/:id',(req,res) => {
     var editCategory = req.body
     var sql = `UPDATE categories SET ? WHERE id = '${req.params.id}'`;
     conn.query(sql, editCategory,(err,result) => {
@@ -92,7 +92,7 @@ app.put('/editcategory/:id',(req,res) => {
 })
 
 //Delete category from lists
-app.delete('/deletecategory/:id',(req,res)=>{
+app.post('/deletecategory/:id',(req,res)=>{
     var sql = `DELETE from categories WHERE id = '${req.params.id}'`;
     conn.query(sql,(err,result) => {
         res.send(result)
@@ -130,7 +130,7 @@ app.post('/addmovcat',(req,res) => {
 })
 
 //Delete movcat from lists
-app.delete('/deletemovcat/:id',(req,res) => {
+app.post('/deletemovcat/:id',(req,res) => {
     var { namaMovie, namaCategory } = req.body
     var sql = `DELETE movcat FROM movcat
         JOIN categories ON movcat.idcategory = categories.id
