@@ -19,7 +19,7 @@ const conn = mysql.createConnection({
 });
 
 app.get('/', (req,res) => {
-    res.send('<h1>Ini Homepage</h1>')   
+    res.send('Ini Homepage')   
 })
 
 //Start Manage Movies
